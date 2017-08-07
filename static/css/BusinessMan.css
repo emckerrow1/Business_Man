@@ -1,0 +1,211 @@
+#background{
+z-index: -1;
+position: fixed;
+background-color: yellow;
+opacity:0.25;
+height: 100%; width: 100%;
+top:0px; left:0px;}
+#panel {
+position: fixed;
+height: 700px;
+width: 1000px;
+border: black 1px solid;
+top: 20px;
+left: 150px;
+background-color: wheat;
+}
+.innerpl{
+width: 700px;
+position:relative;
+margin: 0 auto;
+margin-top: 10px;
+border: black 1px solid;
+background-color: white;
+padding: 50px;
+}
+
+.input{ margin-left: 50px;}
+#namErr{ margin-left: 50px;}
+.error{color:red; font-size: 12px; visibility:hidden;}
+#description{ height: 200px; width: 650px; border: black 1px solid; margin-top:50px; padding-left:20px; padding-right:20px;}
+#entgamebtn{ margin-top: 20px; margin-left: 300px; background-color:red; color:white;}
+#close{ visibility:hidden; float:right; padding: 15px; background-color:red; color:white; font-weight:bold;}
+.hideMenu{display:none;}
+.headingMenu { font-weight: bold; text-decoration: underline;}
+#tutorial{ background-image: url("/static/img/BMtut.png"); font-weight: bold; height:25px; border-color: yellow;}
+.bar {
+top: 40px;
+width: 200px;
+min-height: 595px;
+}
+#wrapper{
+margin-top: 40px;
+min-height: 595px;
+min-width:700px;
+float:left;
+margin-left:300px;
+}
+
+#leftBar{
+position: absolute;
+left:50px;
+background-image: url("/static/img/BMleftBar.png");
+border: black 2px solid;
+}
+
+#rightBar{
+position: absolute;
+left: 1055px;
+}
+#headerRB{ border: 2px black solid; height:50px; width:166px; background-color:white; padding:15px;}
+.heading{ float:left; font-weight:bold; text-decoration:underline;}
+.lbl{float:right;}
+.lblNum{float:right; margin-right:7px;margin-top:10px; font-size: 10px;}
+#bodyRB { border: 2px black solid; border-top-width: 0px; height:450px; width:146px; background-color:white; margin-left:30px; padding:10px;}
+.statBar{ border: 1px black solid; height:10px; width:100px; background-color:#777; margin-top:4px; margin-left:40px;}
+.statBa{ border: 1px black solid; height:10px; width:100px; background-color:green; margin-top:-1px; margin-left:-1px;}
+
+.menuBut{
+position: absolute;
+left:500px;
+height: 100px;
+width:100px;
+background-color:red;
+border-radius: 50%;
+border: 5px solid black;
+}
+#tutorial{position: absolute; top:120px;}
+#map{
+background-image: url("/static/img/BMbtnMap.png");
+left:500px;}
+#inventory{
+background-image: url("/static/img/BMbtnInventory.png");
+left:580px;}
+#jobList{
+background-image: url("/static/img/BMbtnJobList.png");
+left:660px;}
+#mail{
+background-image: url("/static/img/BMbtnMail.png");
+left:740px;}
+#hb5{
+left:820px;}
+#homeBtn{
+background-image: url("/static/img/homeBtn.png");
+height:20px; width:20px;
+border-radius:50%;
+border: black 1px solid;
+position: absolute;
+}
+.timeBox{
+margin:10px;
+width: 25px;}
+.building{
+display:none;
+position:absolute;
+fill: transparent;
+stroke:black;
+stroke-width:1;
+}
+
+#stockTable{ border-spacing: 5px;}
+#appTable, #mailTable { border-collapse: collapse; width: 85%;}
+#mailTableBody {display:none;}
+#headingApps{font-weight:bold;}
+th, td { border: 1px solid black;text-align:center;}
+.itemPic {
+height: 75px;}
+.itemName, .itemPic{
+width: 75px;
+border: 1px solid black;
+margin: 1px;}
+#tablePicr1c1{
+background-image: url("/static/img/Apple.png");
+}
+#tablePicr1c2{
+background-image: url("/static/img/Pen.png");
+}
+#tablePicr1c3{
+background-image: url("/static/img/Drink.png");
+}
+
+#applyInfo{ border: black 1px solid; margin: 10px; padding: 10px;}
+
+.benOff{
+top: 404px;
+left: 633px;
+}
+.train{
+top: 254px;
+left: 894px}
+.butcher{
+top: 421px;
+left: 829px}
+.barbers{
+top: 414px;
+left: 609px}
+.library{
+top: 209px;
+left: 649px}
+.laundrette{
+top: 189px;
+left: 318px}
+.bank{
+top: 164px;
+left: 320px}
+.store{
+top: 164px;
+left: 388px}
+.gym{
+top: 173px;
+left: 696px}
+.doctors{
+top: 270px;
+left: 738px}
+.college{
+top: 326px;
+left: 461px;}
+.police{
+top: 338px;
+left: 837px;}
+.fire{
+top: 371px;
+left: 881px;}
+.post{
+top: 363px;
+left: 824px;}
+.prawn{
+top: 380px;
+left: 807px;}
+.appliance{
+top: 420px;
+left: 858px;}
+.clothes{
+top: 398px;
+left: 791px;}
+.furniture{
+top: 476px;
+left: 884px;}
+.garage{
+top: 539px;
+left: 967px;}
+.show{
+top: 585px;
+left: 941px;}
+.restaurant{
+top: 610px;
+left: 884px;}
+.motel{
+top: 609px;
+left: 805px;}
+.church{
+top: 609px;
+left: 647px;}
+.toilet{
+top: 606px;
+left: 621px;}
+.petrol{
+top: 618px;
+left: 571px;}
+.lumberjacks{
+top: 605px;
+left: 537px;}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if users %}
+        <div class="container innerpl" id='old_games'>
+        	<h2>Previous Games</h2>
+        {% for user in users %}
+          <div class="container-fluid">
+            <p>{{ user.creation_date }}</p>
+            <a href="/home/{{ user.id }}">
+                <p>{{ user.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    <div class="container innerpl" id='new_game' style="text-alignment:center;">  
+    	<h2>New Game</h2>
+        <form action "" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <div id="description">
+    			<h3>Description</h3>
+    			<div class="input">Pick your name and starting location, and build a CV and live life. The aim of the game can be left up to you, by striving towards a successful career or search for happiness. It is up to you!</div>
+    		</div>
+            <input type="submit" id="entgamebtn" value="New Game" />
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <!-- <script src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src = "https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> -->
+{% endblock %}
