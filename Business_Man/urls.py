@@ -20,6 +20,6 @@ import GUI.views as views
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     url(r'^test/', views.test),
-    url(r'^main_menu/', views.main_menu),
+    url(r'^$', views.main_menu),
     url(r'^home/(?P<id>.*)/$', views.home),
 ]

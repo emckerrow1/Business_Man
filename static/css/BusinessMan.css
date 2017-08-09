@@ -33,11 +33,7 @@ padding: 50px;
 .hideMenu{display:none;}
 .headingMenu { font-weight: bold; text-decoration: underline;}
 #tutorial{ background-image: url("/static/img/BMtut.png"); font-weight: bold; height:25px; border-color: yellow;}
-.bar {
-top: 40px;
-width: 200px;
-min-height: 595px;
-}
+
 #wrapper{
 margin-top: 40px;
 min-height: 595px;
@@ -47,13 +43,13 @@ margin-left:300px;
 }
 
 #leftBar{
+top: 40px;
 position: absolute;
 left:50px;
-background-image: url("/static/img/BMleftBar.png");
-border: black 2px solid;
 }
 
 #rightBar{
+top: 40px;
 position: absolute;
 left: 1055px;
 }

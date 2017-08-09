@@ -2,39 +2,45 @@
 {% load static from staticfiles %}
 
 {% block content %}
-    <div id="background"></div>
-    <div id="leftBar" class="bar"></div>
-    <div id="wrapper">
-        <input id="tutorial" onclick="Tutorial()" type="button" value="Click Me!">
-        <div id="hb5" class="menuBut">
+    <div class="row content">
+        <div id="leftBar" class="panel panel-primary">
+            <div class="panel-heading">Legend</div>
+            <img src="/static/img/BMleftBar.png" class="img-rounded" alt="Left_bar"></div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <input id="tutorial" onclick="Tutorial()" type="button" value="Click Me!">
+                <div id="hb5" class="menuBut">
+                </div>
+                <div id="mail" title="Mail" onclick="Mail()" class="menuBut">
+                </div>
+                <div id="jobList" title="Jobs List" onclick="JobsList()" class="menuBut">
+                </div>
+                <div id="inventory" title="Inventory" onclick="Inventory()"class="menuBut">
+                </div>
+                <div id="map" title="Map" class="menuBut">
+                </div>
+            </div>
+            <div class="panel-body">
+                <img src="{% static "img/BMmap.png" %}" alt="Map" usemap="#map">
+            </div>
         </div>
-        <div id="mail" title="Mail" onclick="Mail()" class="menuBut">
-        </div>
-        <div id="jobList" title="Jobs List" onclick="JobsList()" class="menuBut">
-        </div>
-        <div id="inventory" title="Inventory" onclick="Inventory()"class="menuBut">
-        </div>
-        <div id="map" title="Map" class="menuBut">
-        </div>
-        <div id="mapImage">
-            <img src="{% static "img/BMmap.png" %}" alt="Map" usemap="#map">
-        </div>
-    </div>
-    <div id="rightBar" class="bar">
-        <div id="headerRB">
-            <div class="heading">Day: </div><div id="daylbl" class="lbl">22/07/2015</div>
-            </br>
-            <div class="heading">Time: </div><div id="timelbl" class="lbl">12:00 pm</div>
-        </div>
-        <div id="bodyRB">
-            <div class="heading">Name: </div><div id="namelbl" class="lbl">{{ user.name }}</div>
-            </br>
-            <div class="heading">Status: </div><div id="statuslbl" class="lbl">{{ user.status }}</div>
-            </br>
-            <div class="heading">Money: </div><div id="moneylbl" class="lbl">£{{ pounds }}.{{ pence }}</div>
-            </br></br>
-            <div class="heading">Energy: </div><div id="energylbl" class="lblNum">{{ user.energy }} / 100</div></br><div id="energybar" class="statBar"><div id="energyba" class="statBa"></div></div>
-            <div class="heading">Hunger: </div><div id="hungerlbl" class="lblNum">{{ user.hunger }} / 100</div></br><div id="hungerbar" class="statBar"><div id="hungerba" class="statBa"></div></div>
+        <div id="rightBar" class="panel panel-primary">
+            <div class="panel-heading">Stats</div>
+            <div class="panel-body">
+                <div class="heading">Day: </div><div id="daylbl" class="lbl">22/07/2015</div>
+                </br>
+                <div class="heading">Time: </div><div id="timelbl" class="lbl">12:00 pm</div>
+            </div>
+            <div class="panel-body">
+                <div class="heading">Name: </div><div id="namelbl" class="lbl">{{ user.name }}</div>
+                </br>
+                <div class="heading">Status: </div><div id="statuslbl" class="lbl">{{ user.status }}</div>
+                </br>
+                <div class="heading">Money: </div><div id="moneylbl" class="lbl">£{{ pounds }}.{{ pence }}</div>
+                </br></br>
+                <div class="heading">Energy: </div><div id="energylbl" class="lblNum">{{ user.energy }} / 100</div></br><div id="energybar" class="statBar"><div id="energyba" class="statBa"></div></div>
+                <div class="heading">Hunger: </div><div id="hungerlbl" class="lblNum">{{ user.hunger }} / 100</div></br><div id="hungerbar" class="statBar"><div id="hungerba" class="statBa"></div></div>
+            </div>
         </div>
     </div>
 
