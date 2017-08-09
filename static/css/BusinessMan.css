@@ -1,8 +1,8 @@
 #background{
 z-index: -1;
 position: fixed;
-background-color: yellow;
-opacity:0.25;
+background-color: #2f2f2f;
+opacity:0.15;
 height: 100%; width: 100%;
 top:0px; left:0px;}
 #panel {
@@ -12,7 +12,6 @@ width: 1000px;
 border: black 1px solid;
 top: 20px;
 left: 150px;
-background-color: wheat;
 }
 .innerpl{
 width: 700px;
@@ -62,29 +61,12 @@ left: 1055px;
 .statBa{ border: 1px black solid; height:10px; width:100px; background-color:green; margin-top:-1px; margin-left:-1px;}
 
 .menuBut{
-position: absolute;
-left:500px;
-height: 100px;
-width:100px;
-background-color:red;
+margin-left:-10px;
 border-radius: 50%;
-border: 5px solid black;
+border: 3px solid black;
 }
-#tutorial{position: absolute; top:120px;}
-#map{
-background-image: url("/static/img/BMbtnMap.png");
-left:500px;}
-#inventory{
-background-image: url("/static/img/BMbtnInventory.png");
-left:580px;}
-#jobList{
-background-image: url("/static/img/BMbtnJobList.png");
-left:660px;}
-#mail{
-background-image: url("/static/img/BMbtnMail.png");
-left:740px;}
-#hb5{
-left:820px;}
+.menuBut:hover{border: 3px solid gold;}
+
 #homeBtn{
 background-image: url("/static/img/homeBtn.png");
 height:20px; width:20px;
@@ -95,13 +77,6 @@ position: absolute;
 .timeBox{
 margin:10px;
 width: 25px;}
-.building{
-display:none;
-position:absolute;
-fill: transparent;
-stroke:black;
-stroke-width:1;
-}
 
 #stockTable{ border-spacing: 5px;}
 #appTable, #mailTable { border-collapse: collapse; width: 85%;}
@@ -126,9 +101,19 @@ background-image: url("/static/img/Drink.png");
 
 #applyInfo{ border: black 1px solid; margin: 10px; padding: 10px;}
 
+.building_svg{position: absolute;}
+.building_polygon{
+	position: fixed;
+	opacity: 0;
+}
+.building_polygon:hover{
+fill:yellow;
+opacity: 0.30;
+}
+
 .benOff{
 top: 404px;
-left: 633px;
+left: 617px;
 }
 .train{
 top: 254px;
@@ -169,7 +154,7 @@ left: 881px;}
 .post{
 top: 363px;
 left: 824px;}
-.prawn{
+.pawn{
 top: 380px;
 left: 807px;}
 .appliance{

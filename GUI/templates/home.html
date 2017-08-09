@@ -6,21 +6,26 @@
         <div id="leftBar" class="panel panel-primary">
             <div class="panel-heading">Legend</div>
             <img src="/static/img/BMleftBar.png" class="img-rounded" alt="Left_bar"></div>
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <input id="tutorial" onclick="Tutorial()" type="button" value="Click Me!">
-                <div id="hb5" class="menuBut">
-                </div>
-                <div id="mail" title="Mail" onclick="Mail()" class="menuBut">
-                </div>
-                <div id="jobList" title="Jobs List" onclick="JobsList()" class="menuBut">
-                </div>
-                <div id="inventory" title="Inventory" onclick="Inventory()"class="menuBut">
-                </div>
-                <div id="map" title="Map" class="menuBut">
-                </div>
-            </div>
+        <div id="wrapper" class="panel panel-primary">
             <div class="panel-body">
+                <button class="btn btn-primary navbar-btn btn-lg" style="margin:25px;"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+ Click Me!</button>
+                <ul class="nav navbar-nav">
+                    <li title="Map" class="menuBut">
+                        <img src="/static/img/BMbtnMap.png" class="img-circle" alt="Map">
+                    </li>
+                    <li title="Inventory" class="menuBut">
+                        <img src="/static/img/BMbtnInventory.png" class="img-circle" alt="Inventory">
+                    </li>
+                    <li title="Jobs List" class="menuBut">
+                        <img src="/static/img/BMbtnJobList.png" class="img-circle" alt="Job List">
+                    </li>
+                    <li title="Mail" class="menuBut">
+                        <img src="/static/img/BMbtnMail.png" class="img-circle" alt="Mail">
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body" style="margin-top:-30px;">
                 <img src="{% static "img/BMmap.png" %}" alt="Map" usemap="#map">
             </div>
         </div>
@@ -44,14 +49,16 @@
         </div>
     </div>
 
+    <!-- buildings on map -->
     <div>
         {% if user.starting_point == '1' %}
-        <!-- under the bridge -->
-        <div id="homeBtn" class="building" style="display:inline; top:200px; left: 820px"></div>
+        <div id="homeBtn" class="building_svg" style="display:inline; top:200px; left: 820px"></div>
         {% endif %}
-        <svg class="benOff building" style="pointer-events: none" height="50" width="25" >
-                    <polygon  title="Benefits' Office" style="pointer-events: painted" style="position:fixed;" onclick="buildings(this)" onmouseover="highlight(this)" onmouseout="dehighlight(this)" points="0,0,22,0,22,45,0,45"/>
-                </svg>
+        <polygon  class="benOff building_svg" title="Benefits' Office" style="height:50px; width:25px;" points="0,0,22,0,22,45,0,45"></polygon>
+        <svg class="gym building_svg" style="pointer-events: none" height="50" width="62" >
+            <polygon class="building_polygon" title="Gym" style="pointer-events: painted;" points="20,0,60,28,43,48,0,18"/>
+        </svg>
+
     </div>
 {% endblock %}
 
