@@ -8,8 +8,11 @@
             <img src="/static/img/BMleftBar.png" class="img-rounded" alt="Left_bar"></div>
         <div id="wrapper" class="panel panel-primary">
             <div class="panel-body">
+
+        <a href="?building=tutorial">
                 <button class="btn btn-primary navbar-btn btn-lg" style="margin:25px;"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
- Click Me!</button>
+ Click Me!</button></a>
+
                 <ul class="nav navbar-nav">
                     <li title="Map" class="menuBut">
                         <img src="/static/img/BMbtnMap.png" class="img-circle" alt="Map">
@@ -52,17 +55,146 @@
     <!-- buildings on map -->
     <div>
         {% if user.starting_point == '1' %}
-        <div id="homeBtn" class="building_svg" style="display:inline; top:200px; left: 820px"></div>
+        <a href="?building=home">
+        <div id="homeBtn" class="building_svg" style="display:inline; top:200px; left: 820px"></div></a>
         {% endif %}
-        <polygon  class="benOff building_svg" title="Benefits' Office" style="height:50px; width:25px;" points="0,0,22,0,22,45,0,45"></polygon>
-        <svg class="gym building_svg" style="pointer-events: none" height="50" width="62" >
-            <polygon class="building_polygon" title="Gym" style="pointer-events: painted;" points="20,0,60,28,43,48,0,18"/>
+        <svg class="benOff building_svg" height="50" width="25" >
+            <a href="?building=benefits_office">
+            <polygon  class="building_polygon" title="Benefits' Office" points="0,0,22,0,22,45,0,45"></polygon></a>
         </svg>
-
+        <svg class="train building_svg" height="70" width="90" >
+            <a href="?building=train_station">
+            <polygon class="building_polygon" title="Train Station" points="5,9,16,1,28,9,18,18,21,20,37,8,89,43,64,65,1,22,12,13"</polygon></a>
+        </svg>
+        <svg class="butcher building_svg" height="25" width="25" >
+            <a href="?building=butchers">
+            <polygon class="building_polygon" title="Butchers" points="0,0,20,0,20,20,0,20"</polygon></a>
+        </svg>
+        <svg class="barbers building_svg" height="25" width="25" >
+            <a href="?building=barbers">
+            <polygon class="building_polygon" title="Barbers" points="0,0,20,0,20,20,0,20"</polygon></a>
+        </svg>
+        <svg class="library building_svg" height="25" width="25" >
+            <a href="?building=library">
+            <polygon class="building_polygon" title="Library" points="0,0,20,0,20,20,0,20"</polygon></a>
+        </svg>
+        <svg class="laundrette building_svg" height="20" width="20" >
+            <a href="?building=laundrette">
+            <polygon class="building_polygon" title="Laundrette" points="0,0,18,0,18,18,0,18"</polygon></a>
+        </svg>
+        <svg class="bank building_svg" height="25" width="51" >
+            <a href="?building=bank">
+            <polygon class="building_polygon" title="Bank" points="0,0,51,0,51,22,0,22"</polygon></a>
+        </svg>
+        <svg class="store building_svg" height="25" width="40" >
+            <a href="?building=store">
+            <polygon class="building_polygon" title="Store" points="0,0,36,0,36,22,0,22"</polygon></a>
+        </svg>
+        <svg class="gym building_svg" height="50" width="62" >
+            <a href="?building=gym">
+            <polygon class="building_polygon" title="Gym" points="20,0,60,28,43,48,0,18"</polygon></a>
+        </svg>
+        <svg class="doctors building_svg" height="60" width="67" >
+            <a href="?building=doctors">
+            <polygon class="building_polygon" title="Doctors" points="16,0,66,36,43,59,0,17"</polygon></a>
+        </svg>
+        <svg class="college building_svg" height="54" width="52" >
+            <a href="?building=college">
+            <polygon class="building_polygon" title="College" points="0,0,20,0,20,26,51,26,51,53,31,53,31,46,0,46"</polygon></a>
+        </svg>
+        <svg class="police building_svg" height="50" width="61" >
+            <a href="?building=police_station">
+            <polygon class="building_polygon" title="Police Station" points="0,18,17,0,60,31,43,49"</polygon></a>
+        </svg>
+        <svg class="fire building_svg" height="43" width="58" >
+            <a href="?building=fire_station">
+            <polygon class="building_polygon" title="Fire Station" points="0,19,18,0,57,29,57,42,32,42"</polygon></a>
+        </svg>
+        <svg class="post building_svg" height="25" width="25" >
+            <a href="?building=post_office">
+            <polygon class="building_polygon" title="Post Office" points="0,12,13,0,25,12,13,25"</polygon></a>
+        </svg>
+        <svg class="pawn building_svg" height="25" width="25" >
+            <a href="?building=pawn_brokers">
+            <polygon class="building_polygon" title="Pawn Brokers" points="0,12,13,0,25,12,13,25"</polygon></a>
+        </svg>
+        <svg class="appliance building_svg" height="48" width="48" >
+            <a href="?building=appliance_store">
+            <polygon class="building_polygon" title="Appliance Store" points="0,0,19,0,45,27,45,27,45,47,27,47,27,27,22,21,0,21"</polygon></a>
+        </svg>
+        <svg class="clothes building_svg" height="41" width="25" >
+            <a href="?building=clothes_store">
+            <polygon class="building_polygon" title="Clothes Store" points="0,12,10,0,13,0,24,12,24,35,22,37,19,39,16,40,9,40,7,39,5,38,3,37,2,35,0,32"</polygon></a>
+        </svg>
+        <svg class="furniture building_svg" height="40" width="21" >
+            <a href="?building=furniture_store">
+            <polygon class="building_polygon" title="Furniture Store" points="0,0,20,0,20,39,0,39"</polygon></a>
+        </svg>
+        <svg class="garage building_svg" height="32" width="32" >
+            <a href="?building=garage">
+            <polygon class="building_polygon" title="Garage" points="0,0,30,0,30,30,0,30"</polygon></a>
+        </svg>
+        <svg class="show building_svg" height="57" width="55" >
+            <a href="?building=show_room">
+            <polygon class="building_polygon" title="Show Room" points="31,1,53,1,53,51,0,51,0,25,31,25"</polygon></a>
+        </svg>
+        <svg class="restaurant building_svg" height="26" width="46" >
+            <a href="?building=restaurant">
+            <polygon class="building_polygon" title="Restaurant" points="0,1,44,1,44,25,0,25"</polygon></a>
+        </svg>
+        <svg class="motel building_svg" height="29" width="77" >
+            <a href="?building=motel">
+            <polygon class="building_polygon" title="Motel" points="1,1,75,1,75,27,1,27"</polygon></a>
+        </svg>
+        <svg class="church building_svg" height="29" width="78" >
+            <a href="?building=church">
+            <polygon class="building_polygon" title="Church" points="1,6,53,6,53,1,76,1,76,28,53,28,53,25,1,25"</polygon></a>
+        </svg>
+        <svg class="toilet building_svg" height="8" width="7" >
+            <a href="?building=toilet">
+            <polygon class="building_polygon" title="Toilet" points="1,1,5,1,5,6,1,6"</polygon></a>
+        </svg>
+        <svg class="petrol building_svg" height="19" width="17" >
+            <a href="?building=petrol_station">
+            <polygon class="building_polygon" title="Petrol Station" points="1,1,15,1,15,17,1,17"</polygon></a>
+        </svg>
+        <svg class="lumberjacks building_svg" height="13" width="29" >
+            <a href="?building=lumberjacks">
+            <polygon class="building_polygon" title="Lumberjacks" points="1,1,27,1,27,11,1,11"</polygon></a>
+        </svg>
     </div>
+    <!-- Modal -->
+<div id="buildingModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 id="modalTitle" class="modal-title">{{ building.name }}</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{ building.description }}</p>
+        </br>
+        <p>Cost:</p>
+        <p>[{{ building.energy_used_going }}, {{ building.energy_used_there }}, {{ building.energy_used_going }}, {{ building.time_used_going }}, {{ building.time_used_there }}, {{ building.time_used_going }}]</p>
+      </div>
+      <div class="modal-footer">
+      {% if building.action_button != "None" %}
+        <button type="button" class="btn btn-default">{{ building.action_button }}</button>
+      {% endif %}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
 
 {% block javascript %}
     <!-- <script src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script src = "https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> -->
+    {% if building %}
+        <script> $("#buildingModal").modal('show') </script>
+    {% endif %}
 {% endblock %}

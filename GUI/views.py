@@ -7,10 +7,21 @@ from django.core.exceptions import ObjectDoesNotExist
 import uuid
 from forms import MainMenu
 from models import Person
+from models import Building
 
 # Create your views here.
 def test(request):
-    return render(request, "BusinessMan.html")
+    buildings=[]
+    building = Building.objects.create(name="home", 
+        description="This is where you return to after going out and where you can rest waiting for certain times.", 
+        energy_used_going=0,
+        energy_used_there=0,
+        time_used_going=0,
+        time_used_there=0,
+        action_button="Rest"
+    )
+    buildings.append(building)
+    return HttpResponse(str(buildings))
 
 def main_menu(request):
     users = Person.objects.filter(deleted_date=None)
@@ -23,8 +34,8 @@ def main_menu(request):
     else:
         form = MainMenu()
 
-    for user in users:
-        print user.creation_date
+    #for user in users:
+    #    print user.creation_date
 
     return render(request, "main_menu.html", {
             'form':form,
@@ -35,10 +46,23 @@ def home(request, id):
     try:
         user = Person.objects.get(id=id)
     except ObjectDoesNotExist:
-        return HttpResponseRedirect("/main_menu")
+        return HttpResponseRedirect("/")
 
     pounds = user.money / 100
     pence = "%02d" % ((user.money % 100),)
+
+    if 'building' in request.GET:
+        try:
+            building = Building.objects.get(name=request.GET["building"])
+            return render(request, "home.html", {
+                    'user':user,
+                    'pounds':pounds,
+                    'pence':pence,
+                    'building':building,
+                })
+        except ObjectDoesNotExist:
+            pass
+
     return render(request, "home.html", {
             'user':user,
             'pounds':pounds,

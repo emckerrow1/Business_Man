@@ -1,0 +1,94 @@
+[
+  {
+    "fields": {
+        "name":"tutorial", 
+        "description":"Go the benefits office - Time to start making money. Click the benefits office, then click the go action (this uses energy and takes time). You will get £57.90 per week, and all you have to do is, go to the benefits office each week and show evidence of looking for jobs. The payments will stop if you obtain a job or do not go to the office each week. Once complete, click the tutorial button again.", 
+        "energy_used_going":0,
+        "energy_used_there":0,
+        "time_used_going":0,
+        "time_used_there":0,
+        "action_button":"None"
+    },
+    "model": "GUI.Building",
+    "pk": 1
+  },
+  {
+    "fields": {
+        "name":"home", 
+        "description":"This is where you return to after going out and where you can rest waiting for certain times.", 
+        "energy_used_going":0,
+        "energy_used_there":0,
+        "time_used_going":0,
+        "time_used_there":0,
+        "action_button":"Rest"
+    },
+    "model": "GUI.Building",
+    "pk": 2
+  },
+  {
+    "fields": {
+        "name":"benefits_office", 
+        "description":"This is where you get money you may be entitled to. If entitled come back here each week at the time of appointment.", 
+        "energy_used_going":3,
+        "energy_used_there":3,
+        "time_used_going":4,
+        "time_used_there":30,
+        "action_button":"Collect"
+    },
+    "model": "GUI.Building",
+    "pk": 3
+  },
+  {
+    "fields": {
+        "name":"train_station", 
+        "description":"This is the local train station, where people commute to the city for further opportunities.", 
+        "energy_used_going":1,
+        "energy_used_there":2,
+        "time_used_going":1,
+        "time_used_there":1,
+        "action_button":"None"
+    },
+    "model": "GUI.Building",
+    "pk": 4
+  },
+  {
+    "fields": {
+        "name":"store", 
+        "description":"The general store where you buy general things.", 
+        "energy_used_going":3,
+        "energy_used_there":1,
+        "time_used_going":4,
+        "time_used_there":2,
+        "action_button":"Checkout"
+    },
+    "model": "GUI.Building",
+    "pk": 5
+  },
+  {
+    "fields": {
+        "name":"butchers", 
+        "description":"The local butchers where you can purchase meat for energy and keep up hunger levels. You can also apply for work here as well.", 
+        "energy_used_going":3,
+        "energy_used_there":1,
+        "time_used_going":3,
+        "time_used_there":2,
+        "action_button":"None"
+    },
+    "model": "GUI.Building",
+    "pk": 6
+  },
+  {
+    "fields": {
+        "name":"post_office", 
+        "description":"Welcome to the local post office. This is where you pick up your mail, if you do not have a permanent address.", 
+        "energy_used_going":2,
+        "energy_used_there":1,
+        "time_used_going":2,
+        "time_used_there":5,
+        "action_button":"Checkout"
+    },
+    "model": "GUI.Building",
+    "pk": 7
+  }
+
+]

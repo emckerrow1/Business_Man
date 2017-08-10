@@ -67,13 +67,6 @@ border: 3px solid black;
 }
 .menuBut:hover{border: 3px solid gold;}
 
-#homeBtn{
-background-image: url("/static/img/homeBtn.png");
-height:20px; width:20px;
-border-radius:50%;
-border: black 1px solid;
-position: absolute;
-}
 .timeBox{
 margin:10px;
 width: 25px;}
@@ -101,92 +94,100 @@ background-image: url("/static/img/Drink.png");
 
 #applyInfo{ border: black 1px solid; margin: 10px; padding: 10px;}
 
+#homeBtn{
+background-image: url("/static/img/homeBtn.png");
+height:20px; width:20px;
+border-radius:50%;
+border: black 1px solid;
+position: absolute;
+}
+#homeBtn:hover(){border: gold 1px solid;}
 .building_svg{position: absolute;}
 .building_polygon{
 	position: fixed;
 	opacity: 0;
 }
 .building_polygon:hover{
-fill:yellow;
+fill:gold;
 opacity: 0.30;
 }
 
 .benOff{
-top: 404px;
-left: 617px;
+top: 406px;
+left: 619px;
 }
 .train{
-top: 254px;
-left: 894px}
+top: 257px;
+left: 880px}
 .butcher{
-top: 421px;
-left: 829px}
+top: 423px;
+left: 815px}
 .barbers{
-top: 414px;
-left: 609px}
+top: 416px;
+left: 595px}
 .library{
-top: 209px;
-left: 649px}
+top: 211px;
+left: 635px}
 .laundrette{
-top: 189px;
-left: 318px}
+top: 191px;
+left: 305px}
 .bank{
-top: 164px;
-left: 320px}
+top: 166px;
+left: 306px}
 .store{
-top: 164px;
-left: 388px}
+top: 166px;
+left: 374px}
 .gym{
-top: 173px;
-left: 696px}
+top: 175px;
+left: 682px}
 .doctors{
-top: 270px;
-left: 738px}
+top: 272px;
+left: 724px}
 .college{
-top: 326px;
-left: 461px;}
+top: 328px;
+left: 447px;}
 .police{
-top: 338px;
-left: 837px;}
+top: 340px;
+left: 823px;}
 .fire{
-top: 371px;
-left: 881px;}
+top: 373px;
+left: 869px;}
 .post{
-top: 363px;
-left: 824px;}
+top: 365px;
+left: 810px;}
 .pawn{
-top: 380px;
-left: 807px;}
+top: 382px;
+left: 793px;}
 .appliance{
-top: 420px;
-left: 858px;}
+top: 422px;
+left: 844px;}
 .clothes{
-top: 398px;
-left: 791px;}
+top: 400px;
+left: 777px;}
 .furniture{
-top: 476px;
-left: 884px;}
+top: 478px;
+left: 870px;}
 .garage{
-top: 539px;
-left: 967px;}
+top: 541px;
+left: 953px;}
 .show{
-top: 585px;
-left: 941px;}
+top: 587px;
+left: 927px;}
 .restaurant{
-top: 610px;
-left: 884px;}
+top: 612px;
+left: 870px;}
 .motel{
-top: 609px;
-left: 805px;}
+top: 611px;
+left: 791px;}
 .church{
-top: 609px;
-left: 647px;}
+top: 611px;
+left: 633px;}
 .toilet{
-top: 606px;
-left: 621px;}
+top: 608px;
+left: 607px;}
 .petrol{
-top: 618px;
-left: 571px;}
+top: 620px;
+left: 557px;}
 .lumberjacks{
-top: 605px;
-left: 537px;}
+top: 606px;
+left: 523px;}
