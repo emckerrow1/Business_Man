@@ -52,6 +52,11 @@ def home(request, id):
     pence = "%02d" % ((user.money % 100),)
 
     if 'building' in request.GET:
+        response = None
+        if request.GET["building"] == "benefits_office":
+            response = benefits_office(request, user)
+        if response:
+            return response
         try:
             building = Building.objects.get(name=request.GET["building"])
             return render(request, "home.html", {
@@ -68,3 +73,13 @@ def home(request, id):
             'pounds':pounds,
             'pence':pence
         })
+
+########################### buildings ################################
+
+def benefits_office(request, user):
+    if "action" in request.GET:
+        if request.GET["action"] == "Collect":
+            user.money += 5790
+            user.save()
+            return HttpResponseRedirect("/home/"+user.id)
+    #if user.tutorial = 0:

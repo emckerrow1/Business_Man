@@ -10,8 +10,8 @@
             <div class="panel-body">
 
         <a href="?building=tutorial">
-                <button class="btn btn-primary navbar-btn btn-lg" style="margin:25px;"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
- Click Me!</button></a>
+                <button class="btn btn-primary navbar-btn btn-lg" style="margin:25px; float:left;"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+ Tutorial</button></a>
 
                 <ul class="nav navbar-nav">
                     <li title="Map" class="menuBut">
@@ -181,7 +181,9 @@
       </div>
       <div class="modal-footer">
       {% if building.action_button != "None" %}
+      <a href="?building={{building.name}}&action={{building.action_button}}">
         <button type="button" class="btn btn-default">{{ building.action_button }}</button>
+      </a>
       {% endif %}
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

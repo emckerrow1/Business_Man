@@ -64,6 +64,8 @@ left: 1055px;
 margin-left:-10px;
 border-radius: 50%;
 border: 3px solid black;
+width: 106px;
+float:left;
 }
 .menuBut:hover{border: 3px solid gold;}
 
