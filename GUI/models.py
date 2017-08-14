@@ -15,8 +15,10 @@ class Person(models.Model):
 	energy = models.IntegerField(default=100)
 	hunger = models.IntegerField(default=100)
 	creation_date = models.CharField(max_length=30, default=timezone.now().strftime("%Y-%m-%d %H:%M:%S"))
+	game_time = models.DateTimeField(default=timezone.now())
 	deleted_date = models.CharField(max_length=30, default=None)
 	tutorial = models.IntegerField(default=0)
+	benefits = models.ForeignKey("BenefitsOffice")
 
 class Building(models.Model):
 	name = models.CharField(max_length=75, unique=True)
@@ -26,8 +28,7 @@ class Building(models.Model):
 	time_used_going = models.IntegerField(default=0)
 	time_used_there = models.IntegerField(default=0)
 	action_button = models.CharField(max_length=25)
-	#products =  models.ManyToManyField("Products")
-	#available_jobs = models.ManyToManyField("Jobs")
+	#available_jobs = models.ManyToManyField("Jobs", default=None)
 
 #class Jobs(models.Model):
 #	building = models.OneToOneField(Building)
@@ -38,9 +39,15 @@ class Building(models.Model):
 #   application_open_date = models.DateTimeField()
 #   application_close_date = models.DateTimeField()
 
-#class Products(models.Model):
-#	name = models.CharField(max_length=25)
-#	cost = models.IntegerField(default=0)
-#	energy_gained = models.IntegerField(default=0)
-#	hunger_gained = models.IntegerField(default=0)
-#	time_using_item = models.IntegerField(default=0)
+class Products(models.Model):
+	name = models.CharField(max_length=25)
+	cost = models.IntegerField(default=0)
+	energy_gained = models.IntegerField(default=0)
+	hunger_gained = models.IntegerField(default=0)
+	time_using_item = models.IntegerField(default=0)
+	expiry_date = models.IntegerField(default=0)
+	building =  models.ForeignKey("Building", default=None)
+
+class BenefitsOffice(models.Model):
+	start_date = models.DateTimeField(default=None)
+	next_date = models.DateTimeField(default=None)

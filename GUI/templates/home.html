@@ -35,9 +35,9 @@
         <div id="rightBar" class="panel panel-primary">
             <div class="panel-heading">Stats</div>
             <div class="panel-body">
-                <div class="heading">Day: </div><div id="daylbl" class="lbl">22/07/2015</div>
+                <div class="heading">Day: </div><div id="daylbl" class="lbl">{{user.game_time | date:'d M Y'}}</div>
                 </br>
-                <div class="heading">Time: </div><div id="timelbl" class="lbl">12:00 pm</div>
+                <div class="heading">Time: </div><div id="timelbl" class="lbl">{{user.game_time | date:'H:i'}}</div>
             </div>
             <div class="panel-body">
                 <div class="heading">Name: </div><div id="namelbl" class="lbl">{{ user.name }}</div>
@@ -46,8 +46,18 @@
                 </br>
                 <div class="heading">Money: </div><div id="moneylbl" class="lbl">£{{ pounds }}.{{ pence }}</div>
                 </br></br>
-                <div class="heading">Energy: </div><div id="energylbl" class="lblNum">{{ user.energy }} / 100</div></br><div id="energybar" class="statBar"><div id="energyba" class="statBa"></div></div>
-                <div class="heading">Hunger: </div><div id="hungerlbl" class="lblNum">{{ user.hunger }} / 100</div></br><div id="hungerbar" class="statBar"><div id="hungerba" class="statBa"></div></div>
+                <div class="heading">Energy: </div><div id="energylbl" class="lblNum">{{ user.energy }} / 100</div></br><div id="energybar" class="statBar">
+                {% if user.energy < 21 %}
+                    <div id="energyba" class="statBa" style=" background-color:red; width:{{user.energy}}px;"></div>
+                {% elif user.energy < 51 %}
+                    <div id="energyba" class="statBa" style=" background-color:orange; width:{{user.energy}}px;"></div>
+                {% else %}
+                    <div id="energyba" class="statBa" style=" background-color:green; width:{{user.energy}}px;"></div>
+                {% endif %}
+                </div>
+                <div class="heading">Hunger: </div><div id="hungerlbl" class="lblNum">{{ user.hunger }} / 100</div></br><div id="hungerbar" class="statBar">
+                    <div id="hungerba" class="statBa" style="width:{{user.hunger}}px;"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -176,8 +186,28 @@
       <div class="modal-body">
         <p>{{ building.description }}</p>
         </br>
-        <p>Cost:</p>
-        <p>[{{ building.energy_used_going }}, {{ building.energy_used_there }}, {{ building.energy_used_going }}, {{ building.time_used_going }}, {{ building.time_used_there }}, {{ building.time_used_going }}]</p>
+        {% if building.energy_used_going == 0 and building.energy_used_there == 0 and building.time_used_going == 0 and building.time_used_there == 0 %}
+            </br>
+        {% else %}
+            <p>Cost:</p>
+            <p>[{{ building.energy_used_going }}, {{ building.energy_used_there }}, {{ building.energy_used_going }}, {{ building.time_used_going }}, {{ building.time_used_there }}, {{ building.time_used_going }}]</p>
+        {% endif %}
+
+        {% if products %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">Items:</div>
+                </div>
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-sm-1 text-center">{{product.name}}<br><img src="/static/img/{{product.name}}.png"></img></div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">Checkout: £0.00</div>
+                </div>
+            </div>
+        {% endif %}
       </div>
       <div class="modal-footer">
       {% if building.action_button != "None" %}

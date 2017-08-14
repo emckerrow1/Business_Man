@@ -58,7 +58,7 @@ left: 1055px;
 .lblNum{float:right; margin-right:7px;margin-top:10px; font-size: 10px;}
 #bodyRB { border: 2px black solid; border-top-width: 0px; height:450px; width:146px; background-color:white; margin-left:30px; padding:10px;}
 .statBar{ border: 1px black solid; height:10px; width:100px; background-color:#777; margin-top:4px; margin-left:40px;}
-.statBa{ border: 1px black solid; height:10px; width:100px; background-color:green; margin-top:-1px; margin-left:-1px;}
+.statBa{ border: 1px black solid; height:10px; background-color:green; margin-top:-1px; margin-left:-1px;}
 
 .menuBut{
 margin-left:-10px;
