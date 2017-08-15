@@ -47,7 +47,13 @@ class Products(models.Model):
 	time_using_item = models.IntegerField(default=0)
 	expiry_date = models.IntegerField(default=0)
 	building =  models.ForeignKey("Building", default=None)
+	quantity = models.IntegerField(default=0)
 
 class BenefitsOffice(models.Model):
 	start_date = models.DateTimeField(default=None)
 	next_date = models.DateTimeField(default=None)
+
+class Inventory(models.Model):
+	user = models.ForeignKey("Person")
+	product = models.ForeignKey("Products")
+	quantity = models.IntegerField(default=0)

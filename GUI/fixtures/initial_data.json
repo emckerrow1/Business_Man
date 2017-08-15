@@ -89,6 +89,48 @@
     },
     "model": "GUI.Building",
     "pk": 7
+  },
+  {
+    "fields": {
+        "name":"Apple", 
+        "cost":32, 
+        "energy_gained":3,
+        "hunger_gained":5,
+        "time_using_item":3,
+        "expiry_date":168,
+        "building_id":5,
+        "quantity":0
+    },
+    "model": "GUI.Products",
+    "pk": 1
+  },
+  {
+    "fields": {
+        "name":"Pen", 
+        "cost":15, 
+        "energy_gained":0,
+        "hunger_gained":0,
+        "time_using_item":0,
+        "expiry_date":2000,
+        "building_id":5,
+        "quantity":0
+    },
+    "model": "GUI.Products",
+    "pk": 2
+  },
+  {
+    "fields": {
+        "name":"Drink", 
+        "cost":79, 
+        "energy_gained":5,
+        "hunger_gained":0,
+        "time_using_item":3,
+        "expiry_date":17520,
+        "building_id":5,
+        "quantity":0
+    },
+    "model": "GUI.Products",
+    "pk": 3
   }
 
 ]

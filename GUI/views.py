@@ -11,6 +11,7 @@ from models import Person
 from models import Building
 from models import BenefitsOffice
 from models import Products
+from models import Inventory
 
 # Create your views here.
 def test(request):
@@ -77,6 +78,54 @@ def home(request, id):
     pounds = user.money / 100
     pence = "%02d" % ((user.money % 100),)
 
+    if request.method == "POST":
+        if "update_basket" in request.POST or "checkout" in request.POST:
+            total_cost = 0
+            is_valid = True
+            products = []
+            for item in request.POST:
+                if item != "csrfmiddlewaretoken" and item != "update_basket" and item != "checkout":
+                    try:
+                        product = Products.objects.get(name=item)
+                        product.quantity = request.POST[item]
+                        products.append(product)
+                        total_cost += product.cost * int(product.quantity)
+
+                    except ObjectDoesNotExist:
+                        is_valid = False
+                        break
+            if is_valid:
+                if "update_basket" in request.POST:
+
+                    building = Building.objects.get(name=request.POST["update_basket"])
+                    total_cost = {"pounds":total_cost/100, "pence":"%02d" % ((total_cost%100),)}
+                    return render(request, "home.html", {
+                            'user':user,
+                            'pounds':pounds,
+                            'pence':pence,
+                            'building':building,
+                            'products':products,
+                            'total_cost':total_cost,
+                        })
+                else:
+                    if user.money - total_cost < 0:
+                        pass
+                    else:
+                        user.money -= total_cost
+                        user.save()
+                        for product in products:
+                            if user.tutorial == 1:
+                                if product.name == "Pen" and product.quantity > 0:
+                                    user.tutorial = 2
+                                    user.save()
+                            try:
+                                inventory = Inventory.objects.filter(user=user).get(product=product)
+                                inventory.quantity += product.quantity
+                                inventory.save()
+                            except ObjectDoesNotExist:
+                                inventory = invertory.objects.create(user=user, product=product, quantity=product.quantity)
+                                inventory.save()
+
     if 'building' in request.GET:
         try:
             building = Building.objects.get(name=request.GET["building"])
@@ -124,6 +173,8 @@ def benefits_office(request, user, building):
                 if user.tutorial == 0:
                     user.tutorial = 1
                     tut = Building.objects.get(name="tutorial")
+                    # don't do this or happens globally
+                    # use HTML to show the collect description based on user.tutorial
                     tut.description = "Go to the store and buy a pen - You need a pen to fill out job applications. You can also purchase food from here to increase energy and hunger levels."
                     tut.save()
 

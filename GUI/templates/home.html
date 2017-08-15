@@ -6,7 +6,7 @@
         <div id="leftBar" class="panel panel-primary">
             <div class="panel-heading">Legend</div>
             <img src="/static/img/BMleftBar.png" class="img-rounded" alt="Left_bar"></div>
-        <div id="wrapper" class="panel panel-primary">
+        <div id="wrapper" class="panel panel-primary wrapper1">
             <div class="panel-body">
 
         <a href="?building=tutorial">
@@ -177,6 +177,10 @@
 <div id="buildingModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
+      {% if building.action_button == "Checkout" %}
+        <form method="post">
+        {% endif %}
+
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -193,31 +197,50 @@
             <p>[{{ building.energy_used_going }}, {{ building.energy_used_there }}, {{ building.energy_used_going }}, {{ building.time_used_going }}, {{ building.time_used_there }}, {{ building.time_used_going }}]</p>
         {% endif %}
 
+
+
         {% if products %}
             <div class="container">
+              <form method="post">
+              {% csrf_token %}
                 <div class="row">
                     <div class="col-sm-12">Items:</div>
                 </div>
                 <div class="row">
                     {% for product in products %}
-                    <div class="col-sm-1 text-center">{{product.name}}<br><img src="/static/img/{{product.name}}.png"></img></div>
+                    <div class="col-sm-1 text-center" style="min-width:77px; margin-right:5px;">{{product.name}}<br><img src="/static/img/{{product.name}}.png"></img><br><input name={{product.name}} type="text" value="{{product.quantity}}" style="width:77px;"></div>
                     {% endfor %}
                 </div>
+                <br>
                 <div class="row">
-                    <div class="col-sm-12">Checkout: £0.00</div>
+                    {% if total_cost %}
+                    <div class="col-sm-4" style="font-weight:bold;">Checkout: £{{total_cost.pounds}}.{{total_cost.pence}}</div>
+                    {% else %}
+                    <div class="col-sm-4" style="font-weight:bold;">Checkout: £0.00</div>
+                    {% endif %}
+                    <button class="btn btn-primary" type="submit" name="update_basket" value="{{building.name}}">Update Basket</button>
                 </div>
+              </form>
             </div>
         {% endif %}
       </div>
       <div class="modal-footer">
-      {% if building.action_button != "None" %}
+      {% if building.action_button == "Checkout" %}
+            <button class="btn btn-primary" type="submit" name="checkout" value="{{building.name}}">Checkout</button>
+
+      {% elif building.action_button != "None" %}
       <a href="?building={{building.name}}&action={{building.action_button}}">
-        <button type="button" class="btn btn-default">{{ building.action_button }}</button>
+        <button type="button" class="btn btn-primary">{{ building.action_button }}</button>
       </a>
       {% endif %}
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
+
     </div>
+
+    {% if building.action_button == "Checkout" %}
+      </form>
+    {% endif %}
 
   </div>
 </div>
