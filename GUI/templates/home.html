@@ -5,62 +5,18 @@
     <div class="row content">
         <div id="leftBar" class="panel panel-primary">
             <div class="panel-heading">Legend</div>
-            <img src="/static/img/BMleftBar.png" class="img-rounded" alt="Left_bar"></div>
+            <img src="/static/img/BMleftBar.png" class="img-rounded" alt="Left_bar">
+        </div>
         <div id="wrapper" class="panel panel-primary wrapper1">
-            <div class="panel-body">
 
-        <a href="?building=tutorial">
-                <button class="btn btn-primary navbar-btn btn-lg" style="margin:25px; float:left;"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
- Tutorial</button></a>
+            {% include "nav_bar.html" %}
 
-                <ul class="nav navbar-nav">
-                    <li title="Map" class="menuBut">
-                        <img src="/static/img/BMbtnMap.png" class="img-circle" alt="Map">
-                    </li>
-                    <li title="Inventory" class="menuBut">
-                        <img src="/static/img/BMbtnInventory.png" class="img-circle" alt="Inventory">
-                    </li>
-                    <li title="Jobs List" class="menuBut">
-                        <img src="/static/img/BMbtnJobList.png" class="img-circle" alt="Job List">
-                    </li>
-                    <li title="Mail" class="menuBut">
-                        <img src="/static/img/BMbtnMail.png" class="img-circle" alt="Mail">
-                    </li>
-                </ul>
-            </div>
             <div class="panel-body" style="margin-top:-30px;">
                 <img src="{% static "img/BMmap.png" %}" alt="Map" usemap="#map">
             </div>
         </div>
-        <div id="rightBar" class="panel panel-primary">
-            <div class="panel-heading">Stats</div>
-            <div class="panel-body">
-                <div class="heading">Day: </div><div id="daylbl" class="lbl">{{user.game_time | date:'d M Y'}}</div>
-                </br>
-                <div class="heading">Time: </div><div id="timelbl" class="lbl">{{user.game_time | date:'H:i'}}</div>
-            </div>
-            <div class="panel-body">
-                <div class="heading">Name: </div><div id="namelbl" class="lbl">{{ user.name }}</div>
-                </br>
-                <div class="heading">Status: </div><div id="statuslbl" class="lbl">{{ user.status }}</div>
-                </br>
-                <div class="heading">Money: </div><div id="moneylbl" class="lbl">£{{ pounds }}.{{ pence }}</div>
-                </br></br>
-                <div class="heading">Energy: </div><div id="energylbl" class="lblNum">{{ user.energy }} / 100</div></br><div id="energybar" class="statBar">
-                {% if user.energy < 21 %}
-                    <div id="energyba" class="statBa" style=" background-color:red; width:{{user.energy}}px;"></div>
-                {% elif user.energy < 51 %}
-                    <div id="energyba" class="statBa" style=" background-color:orange; width:{{user.energy}}px;"></div>
-                {% else %}
-                    <div id="energyba" class="statBa" style=" background-color:green; width:{{user.energy}}px;"></div>
-                {% endif %}
-                </div>
-                <div class="heading">Hunger: </div><div id="hungerlbl" class="lblNum">{{ user.hunger }} / 100</div></br><div id="hungerbar" class="statBar">
-                    <div id="hungerba" class="statBa" style="width:{{user.hunger}}px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    {% include "stats_bar.html" %}
 
     <!-- buildings on map -->
     <div>

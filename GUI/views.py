@@ -114,17 +114,18 @@ def home(request, id):
                         user.money -= total_cost
                         user.save()
                         for product in products:
-                            if user.tutorial == 1:
-                                if product.name == "Pen" and product.quantity > 0:
-                                    user.tutorial = 2
-                                    user.save()
-                            try:
-                                inventory = Inventory.objects.filter(user=user).get(product=product)
-                                inventory.quantity += product.quantity
-                                inventory.save()
-                            except ObjectDoesNotExist:
-                                inventory = invertory.objects.create(user=user, product=product, quantity=product.quantity)
-                                inventory.save()
+                            if int(product.quantity) > 0:
+                                if user.tutorial == 1:
+                                    if product.name == "Pen":
+                                        user.tutorial = 2
+                                        user.save()
+                                try:
+                                    inventory = Inventory.objects.filter(user=user).get(products=product)
+                                    inventory.quantity += int(product.quantity)
+                                    inventory.save()
+                                except ObjectDoesNotExist:
+                                    inventory = Inventory.objects.create(user=user, products=product, quantity=product.quantity)
+                                    inventory.save()
 
     if 'building' in request.GET:
         try:
@@ -160,6 +161,22 @@ def home(request, id):
             'pence':pence
         })
 
+def inventory(request, id):
+    try:
+        user = Person.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponseRedirect("/")
+
+    pounds = user.money / 100
+    pence = "%02d" % ((user.money % 100),)
+
+    items = Inventory.objects.filter(user=user)
+    return render(request, "inventory.html", {
+            'user':user,
+            'pounds':pounds,
+            'pence':pence,
+            'items':items
+        })  
 ########################### buildings ################################
 
 def benefits_office(request, user, building):

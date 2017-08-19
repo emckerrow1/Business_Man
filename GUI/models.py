@@ -55,5 +55,5 @@ class BenefitsOffice(models.Model):
 
 class Inventory(models.Model):
 	user = models.ForeignKey("Person")
-	product = models.ForeignKey("Products")
+	products = models.ForeignKey("Products")
 	quantity = models.IntegerField(default=0)

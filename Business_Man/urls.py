@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^test/', views.test),
     url(r'^$', views.main_menu),
     url(r'^home/(?P<id>.*)/$', views.home),
+    url(r'^inventory/(?P<id>.*)/$', views.inventory),
 ]
