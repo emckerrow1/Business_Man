@@ -133,8 +133,9 @@
 <div id="buildingModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-      {% if building.action_button == "Checkout" %}
+      {% if building.action_button == "Checkout" or building.action_button == "Rest" %}
         <form method="post">
+        {% csrf_token %}
         {% endif %}
 
     <!-- Modal content-->
@@ -144,7 +145,19 @@
         <h4 id="modalTitle" class="modal-title">{{ building.name }}</h4>
       </div>
       <div class="modal-body">
+        {% if building.name == "tutorial" %}
+        <!-- Tutorial Description -->
+            {% if user.tutorial == 0 %}
+                <p>{{ building.description }}</p>
+            {% elif user.tutorial == 1 %}
+                <p>Go to the store and buy a pen - You need a pen to fill out job applications. You can also purchase food from here to increase energy and hunger levels.</p>
+            {% else %}
+                <p>Tutorials Complete.</p>
+            {% endif %}
+
+        {% else %}
         <p>{{ building.description }}</p>
+        {% endif %}
         </br>
         {% if building.energy_used_going == 0 and building.energy_used_there == 0 and building.time_used_going == 0 and building.time_used_there == 0 %}
             </br>
@@ -153,6 +166,15 @@
             <p>[{{ building.energy_used_going }}, {{ building.energy_used_there }}, {{ building.energy_used_going }}, {{ building.time_used_going }}, {{ building.time_used_there }}, {{ building.time_used_going }}]</p>
         {% endif %}
 
+        {% if building.name == "home" %}
+        <!-- Home Form -->
+            <label> Hours: </label>
+            <input name="hours" type="number" step="1" value="0" />
+        </br>
+            <label> Minutes: </label>
+            <input name="minutes" type="number" step="1" value="0" />
+
+        {% endif %}
 
 
         {% if products %}
@@ -183,7 +205,8 @@
       <div class="modal-footer">
       {% if building.action_button == "Checkout" %}
             <button class="btn btn-primary" type="submit" name="checkout" value="{{building.name}}">Checkout</button>
-
+      {% elif building.action_button == "Rest" %}
+            <button class="btn btn-primary" type="submit" name="rest" value="{{building.name}}">Rest</button>
       {% elif building.action_button != "None" %}
       <a href="?building={{building.name}}&action={{building.action_button}}">
         <button type="button" class="btn btn-primary">{{ building.action_button }}</button>
@@ -194,7 +217,7 @@
 
     </div>
 
-    {% if building.action_button == "Checkout" %}
+    {% if building.action_button == "Checkout" or  building.action_button == "Rest" %}
       </form>
     {% endif %}
 

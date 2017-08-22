@@ -20,22 +20,21 @@
             {% include "nav_bar.html" %}
 
             <div class="panel-body" style="margin-top:-30px;">
-                  <form method="post">
-                  {% csrf_token %}
                     <div class="row">
                         <div class="col-sm-12">Items:</div>
                     </div>
                     <div>
                         {% for item in items %}
-                        <div class="item-list">
-                            <button type="submit" class="btn btn-default">
-                        {{item.products.name}}<span class="badge" style="float:right;">{{item.quantity}}</span><br><img src="/static/img/{{item.products.name}}.png"></img><input style="display: none;" name="item_name" type="text" value="{{item.products.name}}">
-
-                            </button>
-                        </div>
+                        <form method="post">
+                        {% csrf_token %}
+                              <div class="item-list">
+                                  <button type="submit" class="btn btn-default">
+                              {{item.products.name}}<span class="badge" style="float:right;">{{item.quantity}}</span><br><img src="/static/img/{{item.products.name}}.png"></img><input style="display: none;" name="item_name" type="text" value="{{item.products.name}}">
+                                  </button>
+                              </div>
+                        </form>
                         {% endfor %}
                     </div>
-                  </form>
             </div>
         </div>
 

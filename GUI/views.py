@@ -108,6 +108,11 @@ def home(request, id):
                             'total_cost':total_cost,
                         })
                 else:
+                    if "checkout" in request.POST:
+                        building = Building.objects.get(name=request.POST["checkout"])
+                    user.energy = user.energy - (building.energy_used_going*2+building.energy_used_there)
+                    user.game_time += datetime.timedelta(minutes=(building.time_used_going*2+building.time_used_there))
+                    user.save()
                     if user.money - total_cost < 0:
                         pass
                     else:
@@ -126,14 +131,29 @@ def home(request, id):
                                 except ObjectDoesNotExist:
                                     inventory = Inventory.objects.create(user=user, products=product, quantity=product.quantity)
                                     inventory.save()
+        elif "rest" in request.POST:
+            hours = int(request.POST["hours"])
+            minutes = int(request.POST["minutes"])
+            if hours >= 0 and minutes >= 0:
+                user.game_time += datetime.timedelta(hours=hours, minutes=minutes)
+                user.save()
 
-    if 'building' in request.GET:
+
+    elif 'building' in request.GET:
         try:
             building = Building.objects.get(name=request.GET["building"])
             response = None
-            if request.GET["building"] == "benefits_office":
-                response = benefits_office(request, user, building)
-            elif request.GET["building"] == "store":
+            
+            products = Products.objects.filter(building_id=building.id)
+
+            if "action" in request.GET:
+                user.energy = user.energy - (building.energy_used_going*2+building.energy_used_there)
+                user.game_time += datetime.timedelta(minutes=(building.time_used_going*2+building.time_used_there))
+                user.save()
+                if request.GET["building"] == "benefits_office":
+                    response = benefits_office(request, user)
+
+            if products:
                 products = Products.objects.filter(building_id=building.id)
                 return render(request, "home.html", {
                         'user':user,
@@ -171,6 +191,23 @@ def inventory(request, id):
     pence = "%02d" % ((user.money % 100),)
 
     items = Inventory.objects.filter(user=user)
+
+    if request.method == "POST":
+        # may need to check quantity in inventory to stop crafted requests.
+        item = Inventory.objects.get(name=request.POST["item_name"])
+        if (user.energy + item.products.energy_gained) > 100:
+            user.energy = 100
+        else:
+            user.energy += item.products.energy_gained
+        if (user.hunger + item.products.hunger_gained) > 100:
+            user.hunger = 100
+        else:
+            user.hunger += item.products.hunger_gained
+        user.game_time += datetime.timedelta(minutes=item.products.time_using_item)
+        user.save()
+        item.quantity -= 1
+        item.save()
+
     return render(request, "inventory.html", {
             'user':user,
             'pounds':pounds,
@@ -179,21 +216,24 @@ def inventory(request, id):
         })  
 ########################### buildings ################################
 
-def benefits_office(request, user, building):
-    if "action" in request.GET:
-        if request.GET["action"] == "Collect":
-            user.energy = user.energy - (building.energy_used_going*2+building.energy_used_there)
-            if not user.benefits_id:
-                ben_off = BenefitsOffice.objects.create(start_date=user.game_time, next_date=user.game_time+datetime.timedelta(days=7))
-                user.benefits_id = ben_off.id
-                user.money += 5790
-                if user.tutorial == 0:
-                    user.tutorial = 1
-                    tut = Building.objects.get(name="tutorial")
-                    # don't do this or happens globally
-                    # use HTML to show the collect description based on user.tutorial
-                    tut.description = "Go to the store and buy a pen - You need a pen to fill out job applications. You can also purchase food from here to increase energy and hunger levels."
-                    tut.save()
+def benefits_office(request, user):
+    if request.GET["action"] == "Collect":
+        if user.benefits_id:
+            early = user.benefits.next_date - datetime.timedelta(minutes=60)
+            late = user.benefits.next_date + datetime.timedelta(minutes=30)
 
-            user.save()
-            return HttpResponseRedirect("/home/"+user.id)
+            if user.game_time > early and user.game_time < late:
+                ben_obj = BenefitsOffice.objects.get(id=user.benefits_id)
+                ben_obj.next_date += datetime.timedelta(days=7)
+                ben_obj.save()
+            else:
+                return HttpResponseRedirect("/home/"+user.id)
+        else:
+            ben_off = BenefitsOffice.objects.create(start_date=user.game_time, next_date=user.game_time+datetime.timedelta(days=7))
+            user.benefits_id = ben_off.id
+            if user.tutorial == 0:
+                user.tutorial = 1
+
+        user.money += 5790
+        user.save()
+        return HttpResponseRedirect("/home/"+user.id)
